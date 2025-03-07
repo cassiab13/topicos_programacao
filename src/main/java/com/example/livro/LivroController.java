@@ -34,4 +34,10 @@ public class LivroController {
     public ResponseEntity<Livro> update(@PathVariable Long id,@RequestBody Livro novoLivro){
         return ResponseEntity.ok().body(service.update(id, novoLivro));
     }
+
+    @GetMapping("/status/{status}")
+    public ResponseEntity<List<Livro>> findByStatus(@PathVariable String status){
+        Status statusEnum = Status.fromStatus(status);
+        return ResponseEntity.ok().body(service.findByStatus(statusEnum));
+    }
 }

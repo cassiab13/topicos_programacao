@@ -3,8 +3,6 @@ package com.example.livro;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "livro")
@@ -15,6 +13,8 @@ public class Livro {
     private Long id;
     private String nome;
     private String autor;
+    @Enumerated(value = EnumType.STRING)
+    private Status status;
 
     public Long getId() {
         return id;
@@ -38,5 +38,12 @@ public class Livro {
 
     public void setAutor(String autor) {
         this.autor = autor;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

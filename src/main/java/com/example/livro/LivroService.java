@@ -23,6 +23,7 @@ public class LivroService {
        Livro livro = repository.findById(id).orElseThrow(EntityNotFoundException::new);
         livro.setNome(novoLivro.getNome());
         livro.setAutor(novoLivro.getAutor());
+        livro.setStatus(novoLivro.getStatus());
        return repository.save(livro);
     }
 
@@ -30,4 +31,6 @@ public class LivroService {
        repository.deleteById(id);
     }
 
+    public List<Livro> findByStatus(Status status){return repository.findByStatus(status);
+    }
 }
